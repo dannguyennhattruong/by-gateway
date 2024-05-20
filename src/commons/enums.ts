@@ -17,13 +17,13 @@ export enum KEYS {
   LOG_AT = 'log_at',
   ACTIVE_FLAG = 'active_flag',
   DEL_FLAG = 'del_flag',
-  LOG_EXTENSION = '_log'
+  LOG_EXTENSION = '_log',
 }
 
 export enum LOG_ACTIONS {
   CREATE = 'CREATE',
   UPDATE = 'UPDATE',
-  DELETE = 'DELETE'
+  DELETE = 'DELETE',
 }
 
 export enum RES {
@@ -37,7 +37,7 @@ export enum RES {
 export enum RES_STATUS {
   OK = 'OK',
   ERROR = 'ERROR',
-  NG = 'NG'
+  NG = 'NG',
 }
 
 export enum LOG_ACTION {
@@ -61,21 +61,19 @@ export enum ENVIRONMENT {
   HTTP_MAX_REDIRECTS = 'HTTP_MAX_REDIRECTS',
   MONGODB_URI_LOG = 'MONGODB_URI_LOG',
   JWT_SECRET = 'JWT_SECRET',
-  JWT_EXPIRED_TIME= 'JWT_EXPIRED_TIME'
+  JWT_EXPIRED_TIME = 'JWT_EXPIRED_TIME',
 }
 
 export enum HISTOGRAM {
   URL = '/metrics',
   NAME = 'http_request_duration_seconds',
-  HELP = 'HTTP request duration in seconds'
+  HELP = 'HTTP request duration in seconds',
 }
 
 export enum ROLE {
   ROOT = 'root',
   ADMIN = 'admin',
-  USER = 'user'
+  USER = 'user',
 }
 
 export const SYSTEM = 'by-org';
-
-

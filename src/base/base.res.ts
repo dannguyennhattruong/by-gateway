@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 export class BaseRes {
   @ApiProperty({
-    enumName: "SYSTEM",
+    enumName: 'SYSTEM',
     required: true,
     description: ``,
   })

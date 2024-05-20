@@ -6,10 +6,10 @@ import { ROLES_KEY } from './role.decorator';
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private reflector: Reflector) {
-    console.log(`Role Guard is initialized...`)
+    console.log(`Role Guard is initialized...`);
   }
 
-  matchRoles(roles : string[], userRole : string) {
+  matchRoles(roles: string[], userRole: string) {
     return roles.includes(userRole);
   }
 
