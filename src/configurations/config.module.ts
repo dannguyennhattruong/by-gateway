@@ -1,4 +1,3 @@
-
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './environment.config';
@@ -7,11 +6,10 @@ import configuration from './environment.config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [configuration]
+      load: [configuration],
     }),
   ],
   controllers: [],
-  providers: [
-  ],
+  providers: [],
 })
 export class AppConfigurationModule {}

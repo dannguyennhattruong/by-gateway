@@ -1,4 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 export class BaseReq {
   @ApiProperty({
     type: String,
@@ -8,7 +8,7 @@ export class BaseReq {
   api_key?: string;
 
   @ApiProperty({
-    enumName: "SYSTEM",
+    enumName: 'SYSTEM',
     required: true,
     description: ``,
   })

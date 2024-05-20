@@ -1,7 +1,11 @@
-import { BaseDto } from "src/base/base.dto";
+import { BaseDto } from 'src/base/base.dto';
 
-export class ByAccountDto extends BaseDto {
-    id: string;
-    status: string;
+export class ByAccountDtoDefault extends BaseDto {
+  username: string;
+  password: string;
 }
 
+export class ByAccountDto {
+  username: string;
+  password: string;
+}

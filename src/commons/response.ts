@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { RES_STATUS } from "./enums";
+import { ApiProperty } from '@nestjs/swagger';
+import { RES_STATUS } from './enums';
 export class WolResponse {
   @ApiProperty({
     type: String,
@@ -68,10 +68,7 @@ export class WolResponse {
     // set num data to return
     if (Array.isArray(data)) {
       this.num = data.length;
-    } else if (
-      data !== undefined &&
-      data !== null
-    ) {
+    } else if (data !== undefined && data !== null) {
       this.num = 1;
     }
   }

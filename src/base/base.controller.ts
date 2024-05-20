@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 import { isArrayFull, isEqual, isObject } from './../commons/checks.util';
 import { DEFAULT_SYSTEM } from './../commons/consts';
 import { KEYS } from './../commons/enums';
-import { ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth } from '@nestjs/swagger';
 @ApiBearerAuth()
 export class BaseController {
   @InjectPinoLogger(BaseController.name)
@@ -26,7 +26,9 @@ export class BaseController {
     protected configService: ConfigService,
   ) {
     this.apiByUserURI = this.configService.get<string>('API_BY_USER_URI');
-    this.apiByesourceURI = this.configService.get<string>('API_BY_RESOURCE_URI');
+    this.apiByesourceURI = this.configService.get<string>(
+      'API_BY_RESOURCE_URI',
+    );
     this.apiByConfigURI = this.configService.get<string>('API_BY_CONFIG_URI');
     this.apiLogURI = this.configService.get<string>('API_LOG_URI');
   }
@@ -112,7 +114,7 @@ export class BaseController {
 
       return errors;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
