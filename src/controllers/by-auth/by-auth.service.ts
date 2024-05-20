@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ByAccountDto } from './by-auth-dto/by-account-dto';
 
-const fakeUsers = [
+const fakeAccounts = [
   { id: 1, username: 'kan', password: 'kan' },
   { id: 2, username: 'vi', password: 'vi' },
 ];
@@ -13,13 +13,15 @@ export class ByAuthService {
 
   async validateAccount({ username, password }: ByAccountDto): Promise<any> {
     // TODO will improve to check with redis + db later
-    const foundUser = fakeUsers.find((user) => user.username === username);
-    if (!foundUser) return null;
+    const foundAccount = fakeAccounts.find(
+      (account) => account.username === username,
+    );
+    if (!foundAccount) return null;
 
-    if (password === foundUser.password) {
-      const { password, ...user } = foundUser;
+    if (password === foundAccount.password) {
+      const { password, ...account } = foundAccount;
       console.debug('password: ', password);
-      return this.jwtService.sign(user);
+      return this.jwtService.sign(account);
     }
     // return {
     //   username: username,

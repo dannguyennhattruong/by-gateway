@@ -4,7 +4,8 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 // import { ENVIRONMENT } from 'src/commons/enums';
 import { ByAuthService } from '../by-auth.service';
-import { ENVIRONMENT } from 'src/commons/enums';
+// import { ENVIRONMENT } from 'src/commons/enums';
+import { jwtConstants } from '../by-auth.constants';
 
 @Injectable()
 export class ByJwtStrategy extends PassportStrategy(Strategy) {
@@ -15,14 +16,15 @@ export class ByJwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>(ENVIRONMENT.JWT_SECRET),
+      secretOrKey: jwtConstants.secret,
+      // configService.get<string>(ENVIRONMENT.JWT_SECRET),
     });
   }
 
-  async validate(payload) {
+  async validate(payload: any) {
     // TODO check with redis later
     // const valid_account = await this.wolAuthService.validateAccount(payload);
-    if (payload?.user_name) {
+    if (payload?.username) {
       return payload;
     }
 

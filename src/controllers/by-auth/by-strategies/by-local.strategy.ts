@@ -4,14 +4,14 @@ import { ByAuthService } from '../by-auth.service';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
-export class LocalStrategy extends PassportStrategy(Strategy) {
+export class ByLocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: ByAuthService) {
     super();
   }
 
   validate(username: string, password: string) {
-    const user = this.authService.validateAccount({ username, password });
-    if (!user) throw new UnauthorizedException();
-    return user;
+    const account = this.authService.validateAccount({ username, password });
+    if (!account) throw new UnauthorizedException();
+    return account;
   }
 }

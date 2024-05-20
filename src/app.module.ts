@@ -4,7 +4,7 @@ import { HttpModule } from '@nestjs/axios';
 import { LoggerModule } from 'nestjs-pino';
 import { ENVIRONMENT } from './commons/enums';
 import { AppController } from './app.controller';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import configs from './configurations/environment.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ByAuthModule } from './controllers/by-auth/by-auth.module';
@@ -21,6 +21,7 @@ import {
 import { UsersModule } from './users/users.module';
 
 import pino from 'pino';
+import { ByLocalGuard } from './controllers/by-auth/by-guards/by-local.guard';
 
 const env = configs();
 
@@ -117,10 +118,10 @@ export const transportOptions =
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
     },
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: JwtAuthGuard,
-    // },
+    {
+      provide: APP_GUARD,
+      useClass: ByLocalGuard,
+    },
   ],
 })
 export class AppModule {}

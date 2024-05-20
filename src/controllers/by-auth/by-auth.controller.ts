@@ -1,15 +1,14 @@
 import { HttpService } from '@nestjs/axios';
-import { Body, Controller, Get, Post, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, Req } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-// import { ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { BaseController } from 'src/base/base.controller';
 import { ByAuthService } from './by-auth.service';
-// import { JwtAuthGuard } from './by-guards/by-jwt-auth.guard';
-import { ByAccountDto } from './by-auth-dto/by-account-dto';
-import { LocalGuard } from './by-guards/local.guard';
+import { JwtAuthGuard } from './by-guards/by-jwt-auth.guard';
+import { ByLocalGuard } from './by-guards/by-local.guard';
 import { Request } from 'express';
 
-// @ApiTags('auth')
+@ApiTags('auth')
 @Controller('auth')
 export class ByAuthController extends BaseController {
   constructor(
@@ -19,15 +18,15 @@ export class ByAuthController extends BaseController {
   ) {
     super(httpService, configService);
   }
-  @UseGuards(LocalGuard)
+  @UseGuards(ByLocalGuard)
   @Post('login')
-  login(@Body() authPayload: ByAccountDto) {
-    const user = this.authService.validateAccount(authPayload);
-    return user;
+  login(@Req() req: Request) {
+    return req.user;
   }
 
   @Get('status')
+  @UseGuards(JwtAuthGuard)
   status(@Req() req: Request) {
-    req.user;
+    return req.user;
   }
 }
