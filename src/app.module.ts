@@ -18,7 +18,6 @@ import {
   utilities as nestWinstonModuleUtilities,
   WinstonModule,
 } from 'nest-winston';
-import { UsersModule } from './users/users.module';
 
 import pino from 'pino';
 import { ByLocalGuard } from './controllers/by-auth/by-guards/by-local.guard';
@@ -105,7 +104,6 @@ export const transportOptions =
     }),
     // Healthcheck and metric interceptor
     ByAuthModule,
-    UsersModule,
   ],
   controllers: [
     AppController,
